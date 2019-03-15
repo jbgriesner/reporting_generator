@@ -1,13 +1,39 @@
 \documentclass{beamer}
 	\usepackage{pgfgantt}
 	\usepackage{datetime}
-	\newdateformat{bkdate}{\twodigit{\THEDAY} \hspace{0.05cm} \shortmonthname \hspace{0.05cm} \THEYEAR}
+	\usepackage{xcolor}
+	\definecolor{dgreen}{rgb}{0.,0.6,0.}
+	\usepackage{graphicx}
+	\usepackage{pgfplots}
+	\usepackage{pgfplotstable}
+	\pgfplotsset{compat=1.5}
+	\usepackage{graphicx}
+	\usepackage{pgfplots}
+	\usepackage{filecontents}
+
+	\newdateformat{bkdate}{\twodigit{\THEDAY} \hspace{0.05cm} \monthname \hspace{0.05cm} \THEYEAR}
+	\usebackgroundtemplate
+	{
+		\includegraphics[width=\paperwidth,height=\paperheight]{qwant_bg.pdf}
+	}
+	\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+	\addtobeamertemplate{frametitle}{\hspace*{1.4cm}}
 
 \begin{document}
 	\begin{frame}
-		\frametitle{Reporting \bkdate\today}
-		\resizebox{10cm}{!}{
+		\frametitle{\textcolor{dgreen}{Qwant Maps} \bkdate\today}
+		\resizebox{7cm}{!}{
+			\begin{tikzpicture}
+				\begin{axis}
+					\addplot table [x=id, y=IA Local, col sep=comma, mark=none, smooth] {stats.csv};
+					\addplot table [x=id, y=IA knowledge, col sep=comma, mark=none, smooth] {stats.csv};
+					\addplot table [x=id, y=Local FullScreen, col sep=comma, mark=none, smooth] {stats.csv};
+					\addplot table [x=id, y=Maps Appstart, col sep=comma, mark=none, smooth] {stats.csv};
+				\end{axis}
+			\end{tikzpicture}
+		}
 
+		\resizebox{10cm}{!}{
 			\begin{ganttchart}[vgrid,hgrid]{1}{30}
 				\gantttitle{2011}{12} \\
 				\gantttitlelist{1,...,12}{1} \\
@@ -19,7 +45,6 @@
 				\ganttlink{elem2}{elem3}
 				\ganttlink{elem3}{elem4}
 			\end{ganttchart}
-
 		}
 	\end{frame}
 
