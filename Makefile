@@ -14,7 +14,7 @@ html:
 	htlatex ${filename}
 
 ps: dvi
-	dvips -t landscape ${filename}.dvi
+	dvips ${filename}.dvi
 
 dvi:
 	latex ${filename}
@@ -34,3 +34,6 @@ clean:
 	@rm -f ${filename}.dvi
 	@rm -f ${filename}.bbl
 	@rm -f ${filename}.blg
+	@rm -f ${filename}.nav
+	@rm -f ${filename}.snm
+	@rm -f ${filename}.toc
