@@ -1,31 +1,24 @@
 \documentclass[5pt]{beamer}
-    \usepackage{tikz}
+	\usepackage{tikz}
     \usepackage{gantt}
 
-   \usepackage{datetime}
-\usepackage{xcolor}
-\definecolor{dgreen}{rgb}{0.,0.6,0.}
+	\usepackage{xcolor}
+	\definecolor{dgreen}{rgb}{0.,0.6,0.}
+	\definecolor{darkgoldenrod}{rgb}{0.72, 0.53, 0.04}
+	\definecolor{darkspringgreen}{rgb}{0.09, 0.45, 0.27}
 
-\usepackage{graphicx}
-\usepackage{datetime}
-\usepackage{xcolor}
-\usepackage{pgfplots}
-\usepackage{pgfplotstable}
-\pgfplotsset{compat=1.5}
-\usepackage{filecontents}
+	\usepackage{graphicx}
+	\usepackage{datetime}
+	\usepackage{xcolor}
+	\usepackage{pgfplots}
+	\usepackage{pgfplotstable}
+	\pgfplotsset{compat=1.5}
+	\usepackage{filecontents}
+	\usetheme{Boadilla}
 
-\usetheme{Boadilla}
-
-%gets rid of bottom navigation bars
-\setbeamertemplate{footline}[frame number]{}
-
-%gets rid of bottom navigation symbols
-\setbeamertemplate{navigation symbols}{}
-
-%gets rid of footer
-%will override 'frame number' instruction above
-%comment out to revert to previous/default definitions
-\setbeamertemplate{footline}{}
+	\setbeamertemplate{footline}[frame number]{}
+	\setbeamertemplate{navigation symbols}{}
+	\setbeamertemplate{footline}{}
 
 	\usebackgroundtemplate
 	{
@@ -35,56 +28,61 @@
 
 \begin{document}
 	\begin{frame}
-        \frametitle{\textcolor{dgreen}{Qwant Maps} Flashpoint}
-        \fontsize{6}{7.2}\selectfont
-        \setbeamerfont{block title}{size=\scriptsize}
-            \begin{columns}[c]
-                \column{1\textwidth}
-                    \centering
-                        \resizebox{10cm}{!}{
-                                \begin{gantt}[xunitlength=0.5cm,fontsize=\small,titlefontsize=\small,drawledgerline=true]{10}{48}
-                                \begin{ganttitle}
-                                        \titleelement{2009}{7}
-                                        \numtitle{2010}{1}{2012}{12}
-                                        \titleelement{2013}{5}
-                                \end{ganttitle}
-                                \begin{ganttitle}
-                                        \numtitle{6}{1}{12}{1}
-                                        \numtitle{1}{1}{12}{1}
-                                        \numtitle{1}{1}{12}{1}
-                                        \numtitle{1}{1}{12}{1}
-                                        \numtitle{1}{1}{5}{1}
-                                \end{ganttitle}
-                                \ganttbar{task 1}{2}{17}
-                                \ganttgroup{a group of tasks}{6}{18}
-                                \ganttbar{task 2}{5}{10}
-                                \ganttbar[pattern=crosshatch,color=blue]{task 3}{15}{3}
-                                \ganttbar{task 4}{20}{3}
-                                \ganttcon{15}{4}{20}{6}
-                                \ganttbar{task 5}{15}{5}
-                                \ganttbarcon[color=red]{task 6}{20}{5}
-                                \ganttbarcon{task 7}{30}{5}
-                        \end{gantt}
-                        }\\
-                        \begin{columns}[c]
-                                \column{0.4\textwidth}
-                                        \begin{block}{Traffic}
-                                                \resizebox{4cm}{3cm}{
-                                                        \begin{tikzpicture}
-                                                                \begin{axis}
-                                                                        \addplot table [x=id, y=IA Local, col sep=comma, mark=none, smooth] {stats.csv};
-                                                                        \addplot table [x=id, y=IA knowledge, col sep=comma, mark=none, smooth] {stats.csv};
-                                                                        \addplot table [x=id, y=Local FullScreen, col sep=comma, mark=none, smooth] {stats.csv};
-                                                                        \addplot table [x=id, y=Maps Appstart, col sep=comma, mark=none, smooth] {stats.csv};
-                                                                \end{axis}
-                                                        \end{tikzpicture}
-                                                }
-                                        \end{block}
-                               \column{0.4\textwidth}
-                                        \begin{block}{Top Priorities}
-                                                Simmons Hall is composed of metal and concrete.
-                                        \end{block}
-                        \end{columns}
-            \end{columns}
+		\frametitle{\textcolor{green}{Qwant Maps} Flashpoint}
+		\fontsize{6}{7.2}\selectfont
+		\setbeamerfont{block title}{size=\scriptsize}
+		\begin{columns}[c]
+			\column{1\textwidth}
+				\centering
+				\resizebox{!}{3cm}{
+					\begin{gantt}[xunitlength=1.5cm,fontsize=\small,titlefontsize=\small,drawledgerline=true]{9}{10}
+						\begin{ganttitle}
+							\titleelement{March}{2}
+							\titleelement{April}{5}
+							\titleelement{May}{3}
+						\end{ganttitle}
+						\ganttbar[color=blue]{Improve itineraries}{0.4}{4.5}
+						\ganttbar[color=blue]{Public transports}{4.4}{3.3}
+						\ganttbar[color=darkgoldenrod]{Pages Jaunes}{1.8}{3.1}
+						\ganttbar[color=darkgoldenrod]{Autocomp. local search}{4.3}{1.5}
+						\ganttbar[color=darkgoldenrod]{POI Recommendation}{5.5}{4}
+						\ganttbar[color=red]{Geocoder ranking}{0}{7}
+						\ganttbar[color=green]{Business logs}{1.8}{3}
+						\ganttbar[color=purple]{POI Images}{1.8}{2}
+					\end{gantt}
+			}\\
+			\begin{columns}[c]
+				\column{0.4\textwidth}
+					%\begin{block}{Traffic}
+					%	\resizebox{4cm}{3cm}{
+					%		\begin{tikzpicture}
+					%			\begin{axis}
+					%				\addplot table [x=id, y=IA Local, col sep=comma, mark=none, smooth] {stats.csv};
+					%				\addplot table [x=id, y=IA knowledge, col sep=comma, mark=none, smooth] {stats.csv};
+					%				\addplot table [x=id, y=Local FullScreen, col sep=comma, mark=none, smooth] {stats.csv};
+					%				\addplot table [x=id, y=Maps Appstart, col sep=comma, mark=none, smooth] {stats.csv};
+					%			\end{axis}
+					%		\end{tikzpicture}
+					%	}
+					%\end{block}
+					\begin{block}{Top Priorities}
+						\begin{itemize}
+							\item Improve \textcolor{blue}{itineraries}: fix misc bugs (front problems + incoherent itineraries), add \textcolor{blue}{public transports}.
+							\item Geocoder \textcolor{red}{ranking}: update to ES5/6, misc bug fixes, admins priorization, new queries template...
+							\item \textcolor{darkgoldenrod}{Pages Jaunes}/Local search: integration with default categories filters in the front home.
+							\item \textcolor{green}{Changelogs}: make QMaps global releases along with changelogs.
+							\item \textcolor{darkspringgreen}{Business Logs}: set up the business logs exploitation pipeline.
+						\end{itemize}
+					\end{block}
+				\column{0.4\textwidth}
+					\begin{block}{Side Points \& Issues}
+						\begin{itemize}
+							\item No more full time \alert{front-end developer} from April 5th: critical impact on releases frequency.
+							\item \alert{Proxy Mapbox}: timeout problems on itineraries (investigate cache).
+							\item Close collaboration with our partner (Kisio) to improve the geocoder \alert{ranking}.
+						\end{itemize}
+					\end{block}
+			\end{columns}
+		\end{columns}
 	\end{frame}
 \end{document}
